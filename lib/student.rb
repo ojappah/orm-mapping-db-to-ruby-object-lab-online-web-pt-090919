@@ -45,6 +45,11 @@ class Student
 
     DB[:conn].execute(sql, self.name, self.grade)
   end
+  
+    def self.first_student_in_grade_10
+    student = self.first_x_students_in_grade_10(1).flatten
+    self.new_from_db(student)
+  end
     def self.all_students_in_grade_X(num)
     sql = "SELECT * FROM students WHERE grade=?;"
     DB[:conn].execute(sql, num)
